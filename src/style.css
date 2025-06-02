@@ -7,8 +7,54 @@
   box-sizing: border-box;
 }
 
+:root {
+  --clr-1: #06070e;
+  --clr-2: #fcf7f8;
+  --clr-3: #9bf3f0;
+  --clr-4: #0b132b;
+  --clr-5: #ffcad4;
+  --clr-6: #ffe66d;
+  --clr-7: #5e2bff;
+}
+
 body {
-  background: red;
+  width: 100vw;
+  height: 100vh;
+  background: var(--clr-5);
+  font-family: sans-serif;
+}
+
+.main-nav {
+  width: 100%;
+  font-size: 2.5rem;
+  display: flex;
+}
+
+.nav-list {
+  list-style: none;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav-item {
+  padding: 1rem;
+}
+.nav-item span {
+  position: relative;
+}
+.nav-item span::before {
+  position: absolute;
+  display: block;
+  content: attr(data-char);
+  inset: 0;
+}
+.nav-item span:hover {
+  color: red;
+}
+.nav-item span:hover::before {
+  transform: translateY(-20%);
 }
 
 /*# sourceMappingURL=style.css.map */
