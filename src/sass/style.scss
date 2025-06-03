@@ -15,6 +15,11 @@
   --clr-5: #ffcad4;
   --clr-6: #ffe66d;
   --clr-7: #5e2bff;
+  --transition-delay-navItem-ltr: 0;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 body {
@@ -26,35 +31,58 @@ body {
 
 .main-nav {
   width: 100%;
-  font-size: 2.5rem;
-  display: flex;
+  font-size: 2rem;
+  padding: 0.5em;
+  display: grid;
+  grid-template-columns: 1fr 7fr;
 }
 
 .nav-list {
   list-style: none;
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
 .nav-item {
-  padding: 1rem;
+  overflow: hidden;
+  padding: 0.25em;
+
+  a {
+    text-decoration: none;
+  }
 
   span {
     position: relative;
+    color: transparent;
 
-    &::before {
+    &::before,
+    &::after {
+      color: #000;
       position: absolute;
       display: block;
       content: attr(data-char);
       inset: 0;
+      transition: transform 0.5s var(--transiton-delay-navItem-ltr);
     }
-    &:hover {
-      color: red;
 
+    &::before {
+      transform: translateY(0);
+    }
+
+    &::after {
+      transform: translateY(200%);
+    }
+  }
+
+  &:hover {
+    span {
       &::before {
-        transform: translateY(-20%);
+        transform: translateY(-200%);
+      }
+      &::after {
+        transform: translateY(0);
       }
     }
   }
